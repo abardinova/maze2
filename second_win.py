@@ -1,3 +1,5 @@
+from instr import *
+from final_win import *
 class TestWin(Qwidget):
     def __init__(self):
         super().__init__(self):
@@ -6,17 +8,19 @@ class TestWin(Qwidget):
         self.connects()
         self.show()
     def set_appear(self):
-        pass
+        self.setWindowTitle(txt_title)
+        self.resize(win_width,win_heidth)
+        self.move(win_x,win_y)
     def initUI(self):
-        self.h_line = 
-        self.r_line = 
-        self.l_line = 
+        self.h_line = QHBoxLayout()
+        self.r_line = QVBoxLayout()
+        self.l_line = QVBoxLayout()
         self.text1 = QLabel(txt_hello)
         self.text2 = QLabel(txt_age)
         self.text3 = QLabel(txt_test1)
         self.text4 = QLabel(txt_test2)
         self.text5 = QLabel(txt_test3)
-        self.text6 = QLabel()
+        self.text6 = QLabel(txt_timer)
         self.button1 = QPushButton(txt_starttest1)
         self.button2 = QPushButton(txt_starttest2)
         self.button3 = QPushButton(txt_starttest3)
@@ -26,19 +30,24 @@ class TestWin(Qwidget):
         self.line3 = QLineEdit(txt_hinttest1)
         self.line4 = QLineEdit(txt_hinttest2)
         self.line5 = QLineEdit(txt_hinttest3)
+        self.l_line.addWidget(self.text1)
+        self.l_line.addWidget(self.line1)
+        self.l_line.addWidget(self.text2)
+        self.l_line.addWidget(self.line2)
+        self.l_line.addWidget(self.text3)
+        self.l_line.addWidget(self.button1)
+        self.l_line.addWidget(self.line3)
+        self.l_line.addWidget(self.button2)
+        self.l_line.addWidget(self.text5)
+        self.l_line.addWidget(self.button3)
+        self.l_line.addWidget(self.line4)
+        self.l_line.addWidget(self.line5)
+        self.r_line.addWidget(self.text6)
+        self.h_line.addLayout(self.l_line)
+        self.h_line.addLayout(self.r_line)
+        self.setLayout(self.h_line)
     def connects(self):
-
-
-class Finalwin(Qwidget):
-    def __init__(self):
-        super().__init__()
-        self.set_appear()
-        self.initUI()
-
-        self.show()
-    def set_appear(self):
-        pass
-    def initUI(self):
-        self.text7 = QLabel()
-        self.text8 = QLabel()
-        
+        self.button4.clicked.connect(self.next_click)
+    def next_click(self):
+       self.tw = FinalWin()
+       self.hide()
