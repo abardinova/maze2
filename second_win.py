@@ -1,5 +1,12 @@
 from instr import *
 from final_win import *
+from PyQt5.QtCore import Qt, QTimer, QTime
+class Experiment():
+    def __init__(self, age, test1, test2,tset3):
+        self.age = age
+        self.t1 = t1 
+        self.t2 = t2 
+        self.t3 = t3
 class TestWin(Qwidget):
     def __init__(self):
         super().__init__(self):
@@ -46,8 +53,20 @@ class TestWin(Qwidget):
         self.h_line.addLayout(self.l_line)
         self.h_line.addLayout(self.r_line)
         self.setLayout(self.h_line)
+    
+    def next_click(self):
+        self.tw = FinalWin(self,exp)
+        self.exp = Experiment(self.line_age.test(),self.line_test1.text(),self.line_test2.text(),self.line_atest3.text(),)
+        self.hide()
+    def timer_test(self):
+        self.timer.timeout.connect(self.timer1Event)
+        self.timer.start(1000)
+        time = QTime(0,1,0)
+        self,timer = QTimer()
+        self.timer.timeout.connect(self.timer3Event)
+    def timer1Event(self):
+
     def connects(self):
         self.button4.clicked.connect(self.next_click)
-    def next_click(self):
-       self.tw = FinalWin()
-       self.hide()
+        self.button1.clicked.connect(self.timer_test)
+    
